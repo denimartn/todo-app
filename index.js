@@ -63,6 +63,10 @@ function renderTodo() {
   //save input in var
   let input = document.querySelector("input").value;
 
+  if (input.length === 0) {
+    return;
+  }
+
   //create a proto of the todo
   let todo = {
     id: Math.random(),
@@ -78,7 +82,3 @@ function renderTodo() {
 }
 
 onInit();
-
-//su active ci vanno solo i todo non finiti
-//prendi la lista dei totali e filtra quelli in cui isDone = false
-//renderizza
