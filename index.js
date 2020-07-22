@@ -1,9 +1,6 @@
 //arr for all
 let all = [];
 
-//arr for completed
-let completed = [];
-
 function onInit() {
   document.querySelector("#add").addEventListener("click", function (event) {
     event.preventDefault();
@@ -49,8 +46,6 @@ function makeTodo(arr) {
     checkbox.addEventListener("click", function () {
       //change todo state
       todo.isDone = true;
-      //push inot completed arr
-      completed.push(todo);
     });
 
     //set type of input
