@@ -1,9 +1,6 @@
 //arr for all
 let all = [];
 
-//arr for active
-let active = [];
-
 //arr for completed
 let completed = [];
 
@@ -13,12 +10,18 @@ function onInit() {
     renderTodo();
   });
 
-  document.querySelector("#completed").addEventListener("click", function () {
-    makeTodo(completed);
-  });
-  //when i click all i shoul see all the todos
   document.querySelector("#all").addEventListener("click", function () {
     makeTodo(all);
+  });
+
+  document.querySelector("#completed").addEventListener("click", function () {
+    const completed = all.filter((todo) => todo.isDone);
+    makeTodo(completed);
+  });
+
+  document.querySelector("#active").addEventListener("click", function () {
+    const active = all.filter((todo) => !todo.isDone);
+    makeTodo(active);
   });
 }
 
@@ -26,7 +29,7 @@ function makeTodo(arr) {
   let ul = document.querySelector("ul");
 
   ul.innerText = "";
-  //reset the dom
+
   for (let todo of arr) {
     //create a li el
     let li = document.createElement("li");
@@ -74,8 +77,13 @@ function renderTodo() {
 
   //push todo in all
   all.push(todo);
+
   //call makeTodo fn
   makeTodo(all);
 }
 
 onInit();
+
+//su active ci vanno solo i todo non finiti
+//prendi la lista dei totali e filtra quelli in cui isDone = false
+//renderizza
