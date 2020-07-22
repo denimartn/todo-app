@@ -51,8 +51,28 @@ function makeTodo(arr) {
     //set type of input
     checkbox.type = "checkbox";
 
-    //append checkbox to li
-    li.append(checkbox);
+    //usa checlbox solo se todo non è done
+    if (!todo.isDone) {
+      //append checkbox to li
+      li.append(checkbox);
+    } else {
+      //create a button
+      let del = document.createElement("button");
+      //set the inner text of del
+      del.innerText = "x";
+      //set del type
+      del.type = "button";
+
+      //append del to li
+      li.append(del);
+      //click del should remove todo from all
+      del.addEventListener("click", function () {
+        all = all.filter((item) => {
+          item.id !== todo.id;
+        });
+        ul.removeChild(li);
+      });
+    }
 
     //append li to ul
     ul.append(li);
