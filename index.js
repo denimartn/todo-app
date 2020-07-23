@@ -5,6 +5,7 @@ function onInit() {
   document.querySelector("#add").addEventListener("click", function (event) {
     event.preventDefault();
     renderTodo();
+    document.querySelector("input").value = "";
   });
 
   document.querySelector("#all").addEventListener("click", function () {
