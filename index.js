@@ -10,16 +10,20 @@ function onInit() {
 
   document.querySelector("#all").addEventListener("click", function () {
     makeTodo(all);
+    document.querySelector(".input-wrapper").style.display = "block";
   });
 
   document.querySelector("#completed").addEventListener("click", function () {
     const completed = all.filter((todo) => todo.isDone);
     makeTodo(completed);
+    //hide the input
+    document.querySelector(".input-wrapper").style.display = "none";
   });
 
   document.querySelector("#active").addEventListener("click", function () {
     const active = all.filter((todo) => !todo.isDone);
     makeTodo(active);
+    document.querySelector(".input-wrapper").style.display = "block";
   });
 }
 
