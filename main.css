@@ -65,3 +65,7 @@ li {
 span {
   flex-grow: 1;
 }
+
+.line {
+  text-decoration: line-through;
+}

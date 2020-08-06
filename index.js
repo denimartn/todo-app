@@ -1,26 +1,34 @@
 //arr for all
 let all = [];
-
+let currentView = "all";
 function onInit() {
   document.querySelector("#add").addEventListener("click", function (event) {
     event.preventDefault();
     renderTodo();
+
+    if (currentView === "active") {
+      const active = all.filter((todo) => !todo.isDone);
+      makeTodo(active);
+    }
+
     document.querySelector("input").value = "";
   });
 
   document.querySelector("#all").addEventListener("click", function () {
+    currentView = "all";
     makeTodo(all);
     document.querySelector(".input-wrapper").style.display = "block";
   });
 
   document.querySelector("#completed").addEventListener("click", function () {
+    currentView = "completed";
     const completed = all.filter((todo) => todo.isDone);
     makeTodo(completed);
-    //hide the input
     document.querySelector(".input-wrapper").style.display = "none";
   });
 
   document.querySelector("#active").addEventListener("click", function () {
+    currentView = "active";
     const active = all.filter((todo) => !todo.isDone);
     makeTodo(active);
     document.querySelector(".input-wrapper").style.display = "block";
@@ -46,37 +54,23 @@ function makeTodo(arr) {
 
     //create a checkbox
     let checkbox = document.createElement("input");
+    //set type of input
+    checkbox.type = "checkbox";
+    // append it to item
+    li.append(checkbox);
 
     //add click event to checkbox
     checkbox.addEventListener("click", function () {
       //change todo state
       todo.isDone = true;
+      li.classList.add("line");
+      checkbox.disabled = true;
     });
 
-    //set type of input
-    checkbox.type = "checkbox";
-
-    //usa checlbox solo se todo non è done
-    if (!todo.isDone) {
-      //append checkbox to li
-      li.append(checkbox);
-    } else {
-      //create a button
-      let del = document.createElement("button");
-      //set the inner text of del
-      del.innerText = "x";
-      //set del type
-      del.type = "button";
-
-      //append del to li
-      li.append(del);
-      //click del should remove todo from all
-      del.addEventListener("click", function () {
-        all = all.filter((item) => {
-          item.id !== todo.id;
-        });
-        ul.removeChild(li);
-      });
+    if (todo.isDone) {
+      li.classList.add("line");
+      checkbox.disabled = true;
+      checkbox.checked = true;
     }
 
     //append li to ul
