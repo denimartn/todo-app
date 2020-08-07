@@ -46,35 +46,43 @@ function makeTodo(arr) {
     //set li inner text
     li.innerText = todo.value;
 
-    //create span
-    let span = document.createElement("span");
-
-    //append span to li
-    li.append(span);
-
     //create a checkbox
     let checkbox = document.createElement("input");
     //set type of input
     checkbox.type = "checkbox";
     // append it to item
     li.append(checkbox);
-
     //add click event to checkbox
     checkbox.addEventListener("click", function () {
       //change todo state
       todo.isDone = true;
-      li.classList.add("line");
       checkbox.disabled = true;
     });
 
     if (todo.isDone) {
-      li.classList.add("line");
       checkbox.disabled = true;
       checkbox.checked = true;
     }
 
     //append li to ul
     ul.append(li);
+
+    if (currentView === "completed") {
+      const span = document.createElement("span");
+      const deleteOne = document.createElement("button");
+
+      deleteOne.type = "button";
+      deleteOne.innerText = "x";
+      span.append(deleteOne);
+      deleteOne.classList.add("delete");
+      li.append(span);
+      deleteOne.addEventListener("click", function () {
+        all = all.filter((item) => {
+          item.id !== todo.id;
+        });
+        ul.removeChild(li);
+      });
+    }
   }
 }
 

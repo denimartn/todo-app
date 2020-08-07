@@ -63,9 +63,14 @@ li {
 }
 
 span {
+  text-decoration: none;
+  display: flex;
   flex-grow: 1;
+  justify-content: flex-end;
 }
 
-.line {
-  text-decoration: line-through;
+.delete {
+  margin-left: 12px;
+  height: 22px;
+  width: 22px;
 }
