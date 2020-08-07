@@ -2,6 +2,8 @@
 let all = [];
 let currentView = "all";
 function onInit() {
+  document.querySelector(".delete-all").style.display = "none";
+
   document.querySelector("#add").addEventListener("click", function (event) {
     event.preventDefault();
     renderTodo();
@@ -18,13 +20,18 @@ function onInit() {
     currentView = "all";
     makeTodo(all);
     document.querySelector(".input-wrapper").style.display = "block";
+    document.querySelector(".delete-all").style.display = "none";
   });
 
   document.querySelector("#completed").addEventListener("click", function () {
     currentView = "completed";
+
     const completed = all.filter((todo) => todo.isDone);
     makeTodo(completed);
     document.querySelector(".input-wrapper").style.display = "none";
+    if (completed.length > 0) {
+      document.querySelector(".delete-all").style.display = "block";
+    }
   });
 
   document.querySelector("#active").addEventListener("click", function () {
@@ -32,6 +39,7 @@ function onInit() {
     const active = all.filter((todo) => !todo.isDone);
     makeTodo(active);
     document.querySelector(".input-wrapper").style.display = "block";
+    document.querySelector(".delete-all").style.display = "none";
   });
 }
 
@@ -70,7 +78,6 @@ function makeTodo(arr) {
     if (currentView === "completed") {
       const span = document.createElement("span");
       const deleteOne = document.createElement("button");
-
       deleteOne.type = "button";
       deleteOne.innerText = "x";
       span.append(deleteOne);
@@ -83,6 +90,13 @@ function makeTodo(arr) {
         ul.removeChild(li);
       });
     }
+
+    document
+      .querySelector(".delete-all")
+      .addEventListener("click", function () {
+        all = [];
+        ul.innerText = "";
+      });
   }
 }
 
