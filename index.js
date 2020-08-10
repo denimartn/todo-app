@@ -1,4 +1,3 @@
-//arr for all
 let all = [];
 let currentView = "all";
 function onInit() {
@@ -84,9 +83,12 @@ function makeTodo(arr) {
       deleteOne.classList.add("delete");
       li.append(span);
       deleteOne.addEventListener("click", function () {
+        console.log(all);
+        console.log(todo);
         all = all.filter((item) => {
-          item.id !== todo.id;
+          return item.id !== todo.id;
         });
+        console.log(all);
         ul.removeChild(li);
       });
     }
@@ -94,12 +96,12 @@ function makeTodo(arr) {
     document
       .querySelector(".delete-all")
       .addEventListener("click", function () {
+        document.querySelector(".delete-all").style.display = "none";
         completed = all.filter((item) => {
           item.isDone;
         });
         completed = [];
         all = all.filter((item) => !item.isDone);
-
         ul.innerText = "";
       });
   }
