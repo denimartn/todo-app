@@ -94,7 +94,12 @@ function makeTodo(arr) {
     document
       .querySelector(".delete-all")
       .addEventListener("click", function () {
-        all = [];
+        completed = all.filter((item) => {
+          item.isDone;
+        });
+        completed = [];
+        all = all.filter((item) => !item.isDone);
+
         ul.innerText = "";
       });
   }
