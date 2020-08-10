@@ -1,15 +1,16 @@
 let all = [];
 let currentView = "all";
 function onInit() {
+  getTodos();
+  renderTodo(all);
   document.querySelector(".delete-all").style.display = "none";
-
   document.querySelector("#add").addEventListener("click", function (event) {
     event.preventDefault();
-    renderTodo();
+    makeTodo();
 
     if (currentView === "active") {
-      const active = all.filter((todo) => !todo.isDone);
-      makeTodo(active);
+      let active = all.filter((todo) => !todo.isDone);
+      renderTodo(active);
     }
 
     document.querySelector("input").value = "";
@@ -17,7 +18,7 @@ function onInit() {
 
   document.querySelector("#all").addEventListener("click", function () {
     currentView = "all";
-    makeTodo(all);
+    renderTodo(all);
     document.querySelector(".input-wrapper").style.display = "block";
     document.querySelector(".delete-all").style.display = "none";
   });
@@ -25,43 +26,34 @@ function onInit() {
   document.querySelector("#completed").addEventListener("click", function () {
     currentView = "completed";
 
-    const completed = all.filter((todo) => todo.isDone);
-    makeTodo(completed);
+    let completed = all.filter((todo) => todo.isDone);
+    renderTodo(completed);
     document.querySelector(".input-wrapper").style.display = "none";
-    if (completed.length > 0) {
-      document.querySelector(".delete-all").style.display = "block";
-    }
+    document.querySelector(".delete-all").style.display = "block";
   });
 
   document.querySelector("#active").addEventListener("click", function () {
     currentView = "active";
-    const active = all.filter((todo) => !todo.isDone);
-    makeTodo(active);
+    let active = all.filter((todo) => !todo.isDone);
+    renderTodo(active);
     document.querySelector(".input-wrapper").style.display = "block";
     document.querySelector(".delete-all").style.display = "none";
   });
 }
 
-function makeTodo(arr) {
+function renderTodo(arr) {
   let ul = document.querySelector("ul");
 
   ul.innerText = "";
 
   for (let todo of arr) {
-    //create a li el
     let li = document.createElement("li");
-    //set li inner text
     li.innerText = todo.value;
 
-    //create a checkbox
     let checkbox = document.createElement("input");
-    //set type of input
     checkbox.type = "checkbox";
-    // append it to item
     li.append(checkbox);
-    //add click event to checkbox
     checkbox.addEventListener("click", function () {
-      //change todo state
       todo.isDone = true;
       checkbox.disabled = true;
     });
@@ -71,7 +63,6 @@ function makeTodo(arr) {
       checkbox.checked = true;
     }
 
-    //append li to ul
     ul.append(li);
 
     if (currentView === "completed") {
@@ -80,15 +71,12 @@ function makeTodo(arr) {
       deleteOne.type = "button";
       deleteOne.innerText = "x";
       span.append(deleteOne);
-      deleteOne.classList.add("delete");
+      deleteOne.classList.add("delete-one");
       li.append(span);
       deleteOne.addEventListener("click", function () {
-        console.log(all);
-        console.log(todo);
         all = all.filter((item) => {
           return item.id !== todo.id;
         });
-        console.log(all);
         ul.removeChild(li);
       });
     }
@@ -98,7 +86,7 @@ function makeTodo(arr) {
       .addEventListener("click", function () {
         document.querySelector(".delete-all").style.display = "none";
         completed = all.filter((item) => {
-          item.isDone;
+          return item.isDone;
         });
         completed = [];
         all = all.filter((item) => !item.isDone);
@@ -107,26 +95,38 @@ function makeTodo(arr) {
   }
 }
 
-function renderTodo() {
-  //save input in var
+function makeTodo() {
   let input = document.querySelector("input").value;
 
   if (input.length === 0) {
     return;
   }
 
-  //create a proto of the todo
   let todo = {
     id: Math.random(),
     value: input,
     isDone: false,
   };
 
-  //push todo in all
   all.push(todo);
 
-  //call makeTodo fn
-  makeTodo(all);
+  renderTodo(all);
+}
+
+function saveTodos() {
+  let str = JSON.stringify(all);
+  localStorage.setItem("todos", str);
+}
+
+function getTodos() {
+  let str = localStorage.getItem("todos");
+  all = JSON.parse(str);
+  if (!all) {
+    all = [];
+  }
 }
 
 onInit();
+window.addEventListener("beforeunload", function () {
+  saveTodos();
+});
