@@ -3,6 +3,7 @@ let currentView = "all";
 function onInit() {
   getTodos();
   renderTodo(all);
+
   document.querySelector(".delete-all").style.display = "none";
   document.querySelector("#add").addEventListener("click", function (event) {
     event.preventDefault();
@@ -48,11 +49,12 @@ function renderTodo(arr) {
 
   for (let todo of arr) {
     let li = document.createElement("li");
-    li.innerText = todo.value;
-
+    let span = document.createElement("span");
+    span.innerText = todo.value;
     let checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     li.append(checkbox);
+    li.append(span);
     checkbox.addEventListener("click", function () {
       todo.isDone = true;
       checkbox.disabled = true;
@@ -67,9 +69,10 @@ function renderTodo(arr) {
 
     if (currentView === "completed") {
       const span = document.createElement("span");
+      span.classList.add("delete-span");
       const deleteOne = document.createElement("button");
       deleteOne.type = "button";
-      deleteOne.innerText = "x";
+      deleteOne.innerText = "X";
       span.append(deleteOne);
       deleteOne.classList.add("delete-one");
       li.append(span);
@@ -84,7 +87,6 @@ function renderTodo(arr) {
     document
       .querySelector(".delete-all")
       .addEventListener("click", function () {
-        document.querySelector(".delete-all").style.display = "none";
         completed = all.filter((item) => {
           return item.isDone;
         });

@@ -1,5 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Karla&family=Source+Sans+Pro&display=swap");
+
 * {
   box-sizing: border-box;
+}
+
+body,
+input,
+textarea,
+button {
+  font-family: "Karla", sans-serif;
 }
 
 .row {
@@ -7,6 +16,8 @@
   padding: 0 16px;
   max-width: 600px;
   text-align: center;
+  border-radius: 4px;
+  padding: 36px;
 }
 
 .row2 {
@@ -16,18 +27,26 @@
 
 button {
   cursor: pointer;
+  outline: none;
 }
 
 input {
   cursor: pointer;
+  outline: none;
 }
 
 #all,
 #active,
 #completed {
-  padding: 2px;
+  font-weight: 600;
+  padding-bottom: 6px;
   cursor: pointer;
   width: 80px;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 2px solid #3399ff;
+  background: white;
 }
 
 .options {
@@ -43,11 +62,18 @@ input {
 
 .input-text {
   width: 85%;
-  padding: 4px;
+  padding: 6px;
+  font-size: 16px;
+  border: 1px solid lightgrey;
+  border-radius: 6px;
 }
 
 #add {
-  padding: 4px;
+  padding: 8px;
+  border: none;
+  background: #3399ff;
+  color: white;
+  border-radius: 4px;
 }
 
 ul {
@@ -63,18 +89,30 @@ li {
 }
 
 span {
-  text-decoration: none;
-  display: flex;
   flex-grow: 1;
-  justify-content: flex-end;
 }
 
 .delete-one {
+  font-size: 16px;
   margin-left: 12px;
   height: 22px;
   width: 22px;
+  float: right;
+  transform: rotate(90deg);
+  border: none;
+  background: white;
 }
 
 .delete-all {
   float: right;
+  background: #ef7d7d;
+  color: white;
+  border: none;
+  border-radius: 2px;
+  padding: 8px;
+}
+
+i {
+  color: white;
+  margin-right: 6px;
 }
