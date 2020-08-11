@@ -124,3 +124,7 @@ i {
 .hide {
   visibility: hidden;
 }
+
+.show {
+  visibility: visible;
+}
