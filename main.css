@@ -11,20 +11,6 @@ button {
   font-family: "Karla", sans-serif;
 }
 
-.row {
-  margin: 0 auto;
-  padding: 0 16px;
-  max-width: 600px;
-  text-align: center;
-  border-radius: 4px;
-  padding: 36px;
-}
-
-.row2 {
-  margin: 0 auto;
-  max-width: 300px;
-}
-
 button {
   cursor: pointer;
   outline: none;
@@ -35,18 +21,34 @@ input {
   outline: none;
 }
 
+.row {
+  margin: 0 auto;
+  max-width: 600px;
+  padding: 36px;
+  text-align: center;
+}
+
+.row2 {
+  margin: 0 auto;
+  max-width: 300px;
+}
+
 #all,
 #active,
 #completed {
-  font-weight: 600;
-  padding-bottom: 6px;
-  cursor: pointer;
-  width: 80px;
   border-top: 0;
   border-left: 0;
   border-right: 0;
   border-bottom: 2px solid white;
   background: white;
+  cursor: pointer;
+  font-weight: 600;
+  padding-bottom: 6px;
+  width: 80px;
+}
+
+.active {
+  border-bottom: 2px solid #3399ff !important;
 }
 
 .options {
@@ -56,24 +58,22 @@ input {
 
 .input-wrapper {
   margin-top: 24px;
-  display: flex;
-  justify-content: space-between;
 }
 
 .input-text {
-  width: 85%;
-  padding: 6px;
-  font-size: 16px;
   border: 1px solid lightgrey;
   border-radius: 6px;
+  font-size: 16px;
+  padding: 6px;
+  width: 85%;
 }
 
 #add {
-  padding: 8px;
-  border: none;
   background: #3399ff;
-  color: white;
+  border: none;
   border-radius: 4px;
+  color: white;
+  padding: 8px;
 }
 
 #add:hover {
@@ -87,7 +87,6 @@ ul {
 
 li {
   display: flex;
-  list-style-type: none;
   margin-bottom: 18px;
   word-break: break-all;
 }
@@ -97,20 +96,19 @@ span {
 }
 
 .delete-one {
-  font-size: 16px;
-  margin-left: 12px;
-  float: right;
-  transform: rotate(90deg);
   border: none;
   background: white;
+  font-size: 16px;
+  float: right;
+  transform: rotate(90deg);
 }
 
 .delete-all {
-  float: right;
   background: #ef7d7d;
-  color: white;
   border: none;
   border-radius: 2px;
+  color: white;
+  float: right;
   padding: 8px;
 }
 
@@ -121,10 +119,6 @@ span {
 i {
   color: white;
   margin-right: 6px;
-}
-
-.active {
-  border-bottom: 2px solid #3399ff !important;
 }
 
 .hide {
