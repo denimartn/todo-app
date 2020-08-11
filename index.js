@@ -19,6 +19,9 @@ function onInit() {
 
   document.querySelector("#all").addEventListener("click", function () {
     currentView = "all";
+    document.querySelector("#all").classList.add("active");
+    document.querySelector("#active").classList.remove("active");
+    document.querySelector("#completed").classList.remove("active");
     renderTodo(all);
     document.querySelector(".input-wrapper").style.display = "block";
     document.querySelector(".delete-all").style.display = "none";
@@ -26,7 +29,9 @@ function onInit() {
 
   document.querySelector("#completed").addEventListener("click", function () {
     currentView = "completed";
-
+    document.querySelector("#all").classList.remove("active");
+    document.querySelector("#active").classList.remove("active");
+    document.querySelector("#completed").classList.add("active");
     let completed = all.filter((todo) => todo.isDone);
     renderTodo(completed);
     document.querySelector(".input-wrapper").style.display = "none";
@@ -35,6 +40,9 @@ function onInit() {
 
   document.querySelector("#active").addEventListener("click", function () {
     currentView = "active";
+    document.querySelector("#all").classList.remove("active");
+    document.querySelector("#active").classList.add("active");
+    document.querySelector("#completed").classList.remove("active");
     let active = all.filter((todo) => !todo.isDone);
     renderTodo(active);
     document.querySelector(".input-wrapper").style.display = "block";
