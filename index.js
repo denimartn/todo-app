@@ -12,7 +12,7 @@ function onInit() {
   renderTodos(all);
 
   // hide delete all button
-  deleteAllbutton.classList.add("hide");
+  document.querySelector(".delete-all").style.display = "none";
   // add click event on add button
   document.querySelector("#add").addEventListener("click", function (event) {
     event.preventDefault();
@@ -39,7 +39,7 @@ function onInit() {
     //show input button
     inputWrapper.classList.add("show");
     //hide delete-all button
-    deleteAllbutton.classList.add("hide");
+    document.querySelector(".delete-all").style.display = "none";
   });
 
   document.querySelector("#completed").addEventListener("click", function () {
@@ -55,8 +55,8 @@ function onInit() {
     renderTodos(completed);
     //show input button
     inputWrapper.classList.add("hide");
-    //hide delete-all button
-    deleteAllbutton.classList.add("show");
+    //show delete-all button
+    document.querySelector(".delete-all").style.display = "block";
   });
 
   activeButton.addEventListener("click", function () {
@@ -73,7 +73,7 @@ function onInit() {
     //show input button
     inputWrapper.classList.add("show");
     //hide delete-all button
-    deleteAllbutton.classList.add("hide");
+    document.querySelector(".delete-all").style.display = "none";
   });
 }
 
