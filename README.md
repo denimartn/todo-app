@@ -11,3 +11,6 @@ Users can:
 - Toggle between three different statuses (All, Active, Completed);
 - Remove one task;
 - Remove all tasks.
+
+## Screenshot
+[![todo.jpg](https://i.postimg.cc/wv71fq1g/todo.jpg)](https://postimg.cc/xJVjqSG4)
