@@ -1,5 +1,7 @@
 ## Project 
-A simple JavaScript todo app. Her's the link to the React version: https://github.com/denimartn/react-todo-app
+A simple JavaScript todo app. 
+<br/>
+Here's the link to the React version: https://github.com/denimartn/react-todo-app
 
 ## Motivation
 Improve my JavaScript skills by building a simple JavaScript todo application. 
