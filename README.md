@@ -13,4 +13,4 @@ Users can:
 - Remove all tasks.
 
 ## Screenshot
-[![todo.jpg](https://i.postimg.cc/wv71fq1g/todo.jpg)](https://postimg.cc/xJVjqSG4)
+[![todo.jpg](https://i.postimg.cc/wv71fq1g/todo.jpg)]
