@@ -1,5 +1,5 @@
 ## Project 
-A simple JavaScript todo app.
+A simple JavaScript todo app. Her's the link to the React version: 
 
 ## Motivation
 Improve my JavaScript skills by building a simple JavaScript todo application. 
