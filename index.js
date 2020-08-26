@@ -4,7 +4,6 @@ let deleteAllbutton = document.querySelector(".delete-all");
 let allButton = document.querySelector("#all");
 let activeButton = document.querySelector("#active");
 let completedButton = document.querySelector("#completed");
-let inputWrapper = document.querySelector(".input-wrapper");
 
 function onInit() {
   getTodosFromLocalstorage();
@@ -37,7 +36,7 @@ function onInit() {
     //render all todos
     renderTodos(all);
     //show input button
-    inputWrapper.classList.add("show");
+    document.querySelector(".input-wrapper").style.display = "block";
     //hide delete-all button
     document.querySelector(".delete-all").style.display = "none";
   });
@@ -54,7 +53,7 @@ function onInit() {
     //render completed todos
     renderTodos(completed);
     //show input button
-    inputWrapper.classList.add("hide");
+    document.querySelector(".input-wrapper").style.display = "none";
     //show delete-all button
     document.querySelector(".delete-all").style.display = "block";
   });
@@ -71,7 +70,7 @@ function onInit() {
     //render active todos
     renderTodos(active);
     //show input button
-    inputWrapper.classList.add("show");
+    document.querySelector(".input-wrapper").style.display = "block";
     //hide delete-all button
     document.querySelector(".delete-all").style.display = "none";
   });
