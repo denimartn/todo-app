@@ -8,4 +8,4 @@ Users can:
 - Complete a task;
 - Toggle between three different statuses (All, Active, Completed);
 - Remove one task;
-- Remove all tasks;
+- Remove all tasks.
